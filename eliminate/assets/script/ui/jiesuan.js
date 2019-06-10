@@ -39,6 +39,7 @@ cc.Class({
         this.node_win = cc.find("bottom/node_win",this.bg);
 
         this.txt_home = cc.find("bottom/txt_home",this.bg);
+        this.txt_home_ban = cc.find("bottom/txt_home/ban",this.bg);
 
         this.fuhuo_time = cc.find("box_fuhuo/time",this.node_fuhuo).getComponent("cc.Label");
         this.fuhuocoin =  cc.find("box_fuhuo/fuhuocoin",this.node_fuhuo).getComponent("cc.Label");
@@ -52,7 +53,7 @@ cc.Class({
 
 
         this.isUseVedio = true;
-        if(cc.GAME.share)
+        if(cc.GAME.share && storage.getShareNum()<8)
         {
             var r = Math.random()*100;
             if(r>cc.GAME.vediopro || storage.getVedioNum() > 8)
@@ -111,6 +112,7 @@ cc.Class({
 
     show: function(showType)
     {
+        var self = this;
         this.game = cc.find("Canvas").getComponent("game");
         this.node.sc = this;
         this.initUI();
@@ -145,8 +147,8 @@ cc.Class({
                 storage.setLevel(lv+1);
         }
         cc.sdk.hideBanner();
-        var self = this;
-        cc.sdk.showBanner(self.txt_home,function(dis){
+
+        cc.sdk.showBanner(self.txt_home_ban,function(dis){
             self.txt_home.y -= dis;
         });
     },

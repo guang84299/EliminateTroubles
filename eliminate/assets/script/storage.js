@@ -271,6 +271,19 @@ module.exports = {
         return Number(num);
     },
 
+    setShareNum: function(num)
+    {
+        cc.sys.localStorage.setItem(this.pfix+"share_num",num);
+    },
+
+    getShareNum: function()
+    {
+        var num = cc.sys.localStorage.getItem(this.pfix+"share_num");
+        num = num ? num : 0;
+        return Number(num);
+    },
+
+
 
     setMusic: function(music)
     {

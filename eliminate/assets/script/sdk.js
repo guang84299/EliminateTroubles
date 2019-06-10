@@ -248,8 +248,8 @@ module.exports = {
             var query = "channel="+channel;
             if(isOpenid)
                 query = "fromid="+cc.qianqista.openid+"&channel="+channel;
-            var title = "这才是漂移的正确打开方式！";
-            var imageUrl = "https://game.7q7q.top/img/wxgame/922a983642054e27813d8cb68740150a.jpg";//cc.url.raw("resources/zhuanfa.jpg");
+            var title = "滚蛋吧！烦恼！";
+            var imageUrl = "https://www.7q7q.top/share/4.jpg";//cc.url.raw("resources/zhuanfa.jpg");
             if(cc.GAME.shares.length>0)
             {
                 var i = Math.floor(Math.random()*cc.GAME.shares.length);
@@ -267,7 +267,11 @@ module.exports = {
                 success: function(res)
                 {
                     if(callback)
+                    {
                         callback(true);
+                        cc.storage.setShareNum(cc.storage.getShareNum()+1);
+                    }
+
                     cc.log(res);
                 },
                 fail: function()
@@ -367,8 +371,8 @@ module.exports = {
                 return {
                     query:"channel=sharemenu",
                     withShareTicket: true,
-                    title: "这才是漂移的正确打开方式！",
-                    imageUrl: "https://game.7q7q.top/img/wxgame/922a983642054e27813d8cb68740150a.jpg"
+                    title: "滚蛋吧！烦恼！",
+                    imageUrl: "https://www.7q7q.top/share/4.jpg"
                 }
             });
 

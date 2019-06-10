@@ -26,7 +26,7 @@ cc.Class({
         this.node_ui_game = cc.find("game",this.node_ui);
         this.node_ui_common = cc.find("common",this.node_ui);
 
-        this.node_display = cc.find("node_display",this.node_ui_main);
+        this.node_display = cc.find("node_display",this.node);
         this.node_display.zIndex = 9999999;
 
         this.levels = cc.find("levels",this.node_ui_main);
@@ -450,8 +450,12 @@ cc.Class({
                 }
                 else
                 {
-                    cc.sdk.hideBanner();
-                    cc.sdk.showBanner();
+                    if(Math.random()>0.6)
+                    {
+                        cc.sdk.hideBanner();
+                        cc.sdk.showBanner();
+                    }
+
                 }
             }
             this.updateGameUI();
@@ -484,7 +488,7 @@ cc.Class({
         if(b)
         {
             this.node.runAction(cc.sequence(
-                cc.delayTime(0.15),
+                cc.delayTime(0.12),
                 cc.callFunc(function(){
                     self.fomatBox();
                 })

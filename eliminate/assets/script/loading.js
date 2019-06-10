@@ -231,13 +231,25 @@ cc.Class({
             {
                 storage.setLoginTime(now);
                 storage.setVedioNum(0);
+                storage.setShareNum(0);
             }
+
+            if(!datas.hasOwnProperty("first"))
+            {
+                storage.setMusic(1);
+                storage.setSound(1);
+                storage.setVibrate(1);
+            }
+
             console.log("VedioNum:",storage.getVedioNum());
             console.log("datas:",datas);
         }
         else
         {
             this.uploadData();
+            storage.setMusic(1);
+            storage.setSound(1);
+            storage.setVibrate(1);
         }
     },
 
@@ -271,6 +283,7 @@ cc.Class({
         cc.GAME.skipgame = null;
         cc.GAME.share = false;
         cc.GAME.shares = [];
+        cc.GAME.vediopro = 100;
         if(cc.GAME.control.length>0)
         {
             for(var i=0;i<cc.GAME.control.length;i++)

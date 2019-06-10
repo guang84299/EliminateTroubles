@@ -24,7 +24,7 @@ cc.Class({
         this.lixianDt = 0;
 
         this.isUseVedio = true;
-        if(cc.GAME.share)
+        if(cc.GAME.share  && storage.getShareNum()<8)
         {
             var r = Math.random()*100;
             if(r>cc.GAME.vediopro || storage.getVedioNum() > 8)

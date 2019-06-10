@@ -40,7 +40,7 @@ cc.Class({
 
     updateUI: function()
     {
-        this.coin_num.string = this.award;
+        this.coin_num.string = storage.castNum(this.award);
     },
 
     btnVedio: function()
