@@ -87,7 +87,7 @@ cc.Class({
             var btn_txt = cc.find("btn/str",item).getComponent("cc.Label");
             if(task)
             {
-                res.loadPic(head,task.pic);
+                res.setSpriteFrame("images/game/box0"+Math.floor(Math.random()*4+1),head);
             }
             if(n+1>cc.ginvitelist.length)
             {
@@ -142,7 +142,7 @@ cc.Class({
             //coinnum.string = storage.castNum(this.awardnum);
             if(task)
             {
-                res.loadPic(head,task.pic);
+                res.setSpriteFrame("images/game/box0"+Math.floor(Math.random()*4+1),head);
             }
             if(cc.ginvitelist.length<i+1)
             {
