@@ -109,9 +109,22 @@ cc.Class({
             wx.onHide(function(){
                 cc.qianqista.event("加载中_退出");
             });
+
+            var manager = wx.getUpdateManager();
+            manager.onCheckForUpdate(function(r){
+                if(r && r.hasUpdate)
+                {
+
+                }
+            });
+            manager.onUpdateReady(function(r){
+                manager.applyUpdate();
+            });
         }
 
         this.netLoading.runAction(cc.repeatForever(cc.rotateBy(1,180)));
+
+
     },
 
     loadres: function()
