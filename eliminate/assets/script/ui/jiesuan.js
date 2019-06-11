@@ -140,12 +140,20 @@ cc.Class({
         //res.showToast("金币+"+storage.castNum(this.awardCoin));
         this.updateUI();
 
+        var lv = storage.getLevel();
+        this.currLv = lv;
         if(this.showType == "win")
         {
-            var lv = storage.getLevel();
             if(lv+1<=config.levels.length)
                 storage.setLevel(lv+1);
+            cc.qianqista.event("关卡胜利_"+lv);
+            sdk.uploadScore(lv);
         }
+        else if(this.showType == "fail")
+        {
+            cc.qianqista.event("关卡失败_"+lv);
+        }
+
         cc.sdk.hideBanner();
 
         cc.sdk.showBanner(self.txt_home_ban,function(dis){
@@ -218,6 +226,7 @@ cc.Class({
                     }
                 },"fuhuo");
             }
+            cc.qianqista.event("关卡复活_"+this.currLv);
         }
         else if(data == "home")
         {
@@ -256,16 +265,19 @@ cc.Class({
                     }
                 },"lingqu");
             }
+            cc.qianqista.event("关卡领取");
         }
         else if(data == "again")
         {
             this.game.startGame();
             this.hide();
+            cc.qianqista.event("关卡再来一次");
         }
         else if(data == "next")
         {
             this.game.startGame();
             this.hide();
+            cc.qianqista.event("关卡下一关");
         }
         else if(data == "share")
         {
