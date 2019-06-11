@@ -209,6 +209,14 @@ module.exports = {
         return Number(time);
     },
 
+    uploadLiXianTime: function()
+    {
+        var datas = {};
+        datas.lixian_time = this.getLiXianTime();
+        var data = JSON.stringify(datas);
+        cc.qianqista.uploaddatas(data);
+    },
+
 
     setX2Time: function(time)
     {
@@ -331,11 +339,11 @@ module.exports = {
 
     setInviteLnum: function(num)
     {
-        cc.sys.localStorage.setItem(this.pfix+"invite_lnum",num);
+        cc.sys.localStorage.setItem(this.pfix+"ginvite_lnum",num);
     },
     getInviteLnum: function()
     {
-        var num = cc.sys.localStorage.getItem(this.pfix+"invite_lnum");
+        var num = cc.sys.localStorage.getItem(this.pfix+"ginvite_lnum");
         num = num ? num : 0;
         return Number(num);
     },

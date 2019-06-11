@@ -75,6 +75,7 @@ cc.Class({
                         var now = new Date().getTime();
                         storage.setLiXianTime(now);
                         storage.uploadCoin();
+                        storage.uploadLiXianTime();
                         self.main.updateMainUI();
                         self.main.lixian_time = now;
                         self.hide();
@@ -92,6 +93,7 @@ cc.Class({
                         var now = new Date().getTime();
                         storage.setLiXianTime(now);
                         storage.uploadCoin();
+                        storage.uploadLiXianTime();
                         self.main.updateMainUI();
                         self.main.lixian_time = now;
                         self.hide();
@@ -107,6 +109,7 @@ cc.Class({
             var now = new Date().getTime();
             storage.setLiXianTime(now);
             storage.uploadCoin();
+            storage.uploadLiXianTime();
             self.main.updateMainUI();
             self.main.lixian_time = now;
             this.hide();

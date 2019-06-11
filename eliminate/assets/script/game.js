@@ -90,9 +90,12 @@ cc.Class({
         this.level_next_num.string = (level+1);
 
         var step = cc.storage.getStep();
-        this.mainStep = step;
+        var lnum = cc.storage.getInviteLnum();
+        this.mainStep = step+lnum;
         this.step_num.string = step;
-        this.step_coinnum.string = cc.storage.castNum(config.steps[step-1].upcoin);
+        if(lnum>0) this.step_num.string = step + "+" + lnum;
+        if(this.mainStep>config.steps.length)this.mainStep = config.steps.length;
+        this.step_coinnum.string = cc.storage.castNum(config.steps[this.mainStep-1].upcoin);
         //this.step_btn.interactable = coin>=config.steps[step-1].upcoin ? true : false;
         //var step_btn_children = this.step_btn.node.children;
         //if(this.step_btn.interactable)
@@ -179,7 +182,7 @@ cc.Class({
         this.node_ui_game.active = true;
         this.box_pos = [];
         this.selbox = [];
-        this.gameStep = cc.storage.getStep();
+        this.gameStep = cc.storage.getStep()+cc.storage.getInviteLnum();
         this.gameCoin = cc.storage.getCoin();
         this.gameLevel = cc.storage.getLevel();
         this.gameGetCoin = 0;
@@ -672,9 +675,15 @@ cc.Class({
     {
         var coin = cc.storage.getCoin();
         var step = cc.storage.getStep();
-        if(coin>=config.steps[step-1].upcoin)
+        var lnum = cc.storage.getInviteLnum();
+        if(step+lnum>=config.steps.length)
         {
-            cc.storage.setCoin(coin - config.steps[step-1].upcoin);
+            res.showToast("当前步数暂满！");
+            return;
+        }
+        if(coin>=config.steps[step+lnum-1].upcoin)
+        {
+            cc.storage.setCoin(coin - config.steps[step+lnum-1].upcoin);
             cc.storage.setStep(step+1);
             cc.storage.uploadCoinAndStep();
             this.updateMainUI();

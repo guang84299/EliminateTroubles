@@ -20,7 +20,10 @@ cc.Class({
         this.coin_num = cc.find("bg/coinbg/num",this.node).getComponent(cc.Label);
 
         var step = storage.getStep();
-        this.award = cc.config.steps[step-1].upcoin*0.2;
+        var lnum = cc.storage.getInviteLnum();
+        var num = step+lnum-1;
+        if(num>=cc.config.steps.length) num=cc.config.steps.length-1;
+        this.award = cc.config.steps[num].upcoin*0.2;
     },
 
     show: function()

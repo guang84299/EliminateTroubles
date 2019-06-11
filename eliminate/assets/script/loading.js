@@ -239,6 +239,8 @@ cc.Class({
                 storage.setMusic(1);
                 storage.setSound(1);
                 storage.setVibrate(1);
+
+                this.uploadData();
             }
 
             console.log("VedioNum:",storage.getVedioNum());

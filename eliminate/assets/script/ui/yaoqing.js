@@ -180,7 +180,6 @@ cc.Class({
             if(this.lnum<=item.tid)
             {
                 res.showToast("步数+1");
-                storage.setStep(storage.getStep()+1);
                 this.lnum+=1;
                 storage.setInviteLnum(this.lnum);
                 this.updateallitem();
