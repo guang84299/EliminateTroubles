@@ -157,7 +157,7 @@ cc.Class({
         cc.sdk.hideBanner();
 
         cc.sdk.showBanner(self.txt_home_ban,function(dis){
-            self.txt_home.y -= dis;
+            self.txt_home.y -= (dis-20);
         });
     },
 

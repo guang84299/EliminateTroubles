@@ -350,7 +350,7 @@ module.exports = {
     uploadInviteLnum: function()
     {
         var datas = {};
-        datas.invite_lnum = this.getInviteLnum();
+        datas.ginvite_lnum = this.getInviteLnum();
         var data = JSON.stringify(datas);
         cc.qianqista.uploaddatas(data);
     },

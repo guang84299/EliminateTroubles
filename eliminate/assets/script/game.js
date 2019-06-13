@@ -451,15 +451,6 @@ cc.Class({
                 {
                     this.gameFail();
                 }
-                else
-                {
-                    if(Math.random()>0.6)
-                    {
-                        cc.sdk.hideBanner();
-                        cc.sdk.showBanner();
-                    }
-
-                }
             }
             this.updateGameUI();
 
@@ -535,6 +526,12 @@ cc.Class({
                 cc.delayTime(t+0.3),
                 cc.callFunc(function(){
                     self.state = "start";
+
+                    if(self.gameStep>0 && Math.random()>0.7)
+                    {
+                        cc.sdk.hideBanner();
+                        cc.sdk.showBanner();
+                    }
                 })
             ));
         }
